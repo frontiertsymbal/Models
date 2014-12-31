@@ -39,6 +39,18 @@ public class Group extends Model{
         }
     }
 
+    public void increaseSize() {
+        for (Model aList : list) {
+            aList.increaseSize();
+        }
+    }
+
+    public void reduceSize() {
+        for (Model aList : list) {
+            aList.reduceSize();
+        }
+    }
+
     public List <Model> getList(){
         return list;
     }
