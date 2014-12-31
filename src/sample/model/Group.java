@@ -1,8 +1,6 @@
 package sample.model;
 
 import javafx.scene.canvas.GraphicsContext;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,13 +56,6 @@ public class Group extends Model{
 
 
     public void addToGroup(Model model){
-        if (model instanceof Group){
-            Group group = (Group) model;
-            for (int i = 0; i < group.getList().size(); i++) {
-                list.add(group.getList().get(i));
-            }
-        }else {
             list.add(model);
-        }
     }
 }

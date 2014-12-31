@@ -11,6 +11,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sample.model.*;
 
+import java.nio.file.attribute.GroupPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -136,9 +137,23 @@ public class Main extends Application {
                                 if (current == selected) {
                                     return;
                                 }
-                                group1.addToGroup(current);
-                                group1.addToGroup(selected);
-                                group1.draw();
+                                if (current instanceof Group && selected instanceof Group) {
+                                    Group gr1 = (Group) current;
+                                    Group gr2 = (Group) selected;
+                                    Group group = new Group(model.getX(), model.getY(), gc, obj);
+                                    for (int j = 0; j < gr1.getList().size(); j++) {
+                                        group.addToGroup(gr1.getList().get(i));
+                                    }
+                                    for (int j = 0; j < gr2.getList().size(); j++) {
+                                        group.addToGroup(gr2.getList().get(i));
+                                    }
+                                    group.draw();
+                                    model = group;
+                                }else {
+                                    group1.addToGroup(current);
+                                    group1.addToGroup(selected);
+                                    group1.draw();
+                                }
                                 obj.remove(current);
                                 obj.remove(selected);
                             }
