@@ -11,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import sample.model.*;
 
-import java.nio.file.attribute.GroupPrincipal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -147,8 +146,8 @@ public class Main extends Application {
                                     for (int j = 0; j < gr2.getList().size(); j++) {
                                         group.addToGroup(gr2.getList().get(i));
                                     }
-                                    group.draw();
-                                    model = group;
+                                    group1 = group;
+                                    group1.draw();
                                 }else {
                                     group1.addToGroup(current);
                                     group1.addToGroup(selected);

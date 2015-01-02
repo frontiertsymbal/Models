@@ -53,6 +53,9 @@ public class Group extends Model{
         return list;
     }
 
+    public void setList(List<Model> list){
+        this.list = list;
+    }
 
 
     public void addToGroup(Model model){
