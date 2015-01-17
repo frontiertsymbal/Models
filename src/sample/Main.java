@@ -54,7 +54,7 @@ public class Main extends Application {
     public void helpText(){
         String s = "1, NumPad 1 - add Square\n2, NumPda 2 - add Circle\n3, NumPad 3 - add Triangle\n" +
                 "To move object use arrows\nTo chose object use PageUp and PageDown keys\nNumPad + and NumPad - use to reduce and " +
-                "increase size of object\nUse C key to chose a color\nUse Del to delete object" +
+                "increase size of object\nUse C key to chose a color\nUse Del to delete object (You can not delete the last object)" +
                 "\nMouseClick + Ctrl key add objects to group\nPress H to see this text";
         gc.setFill(Color.BLACK);
         int fontSize = 20;
@@ -132,7 +132,7 @@ public class Main extends Application {
                         model.reduceSize();
                         break;
                     case DELETE:
-                        if(obj.size() == 0) {
+                        if(obj.size() == 0 || obj.size() == 1) {
                             break;
                         }
                         obj.remove(index);
