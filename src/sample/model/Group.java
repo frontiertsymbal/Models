@@ -6,14 +6,14 @@ import javafx.scene.paint.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Group extends Model{
+public class Group extends Model {
 
     private List<Model> list = new ArrayList<Model>();
 
     public Group(double x, double y, GraphicsContext gc, List<Model> obj) {
         super(x, y, gc, obj);
     }
-    
+
     public boolean isTouched(double mouseX, double mouseY) {
         for (Model aList : list) {
             if (aList.isTouched(mouseX, mouseY)) {
@@ -56,21 +56,18 @@ public class Group extends Model{
         }
     }
 
-    public List <Model> getList(){
+    public List<Model> getList() {
         return list;
     }
 
-    public void setList(List<Model> list){
-        this.list = list;
+
+
+    public void addToGroup(Model model) {
+        list.add(model);
     }
 
-    public void addAllToGroup (List<Model> list) {
+    public void addAllGroupElementsToGroup(List<Model> list) {
         this.list.addAll(list);
-    }
-
-
-    public void addToGroup(Model model){
-            list.add(model);
     }
 
     public void setGroupColor() {

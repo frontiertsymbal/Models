@@ -142,8 +142,8 @@ public class Main extends Application {
                                 }
                                 if (current instanceof Group && selected instanceof Group) {
                                     Group group2 = new Group(model.getX(), model.getY(), gc, obj);
-                                    group2.addAllToGroup(((Group) selected).getList());
-                                    group2.addAllToGroup(((Group) current).getList());
+                                    group2.addAllGroupElementsToGroup(((Group) selected).getList());
+                                    group2.addAllGroupElementsToGroup(((Group) current).getList());
                                     group1 = group2;
                                     group1.draw();
                                 }else {
