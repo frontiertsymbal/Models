@@ -8,6 +8,8 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import sample.model.*;
 
@@ -40,12 +42,24 @@ public class Main extends Application {
         keyListener(scene);
         registerOnMousePressListener(scene);
         firstModel();
+        helpText();
     }
 
     public void firstModel() {
         model = new Oval(rand.nextInt((int) CANVAS_X - 30), rand.nextInt((int) CANVAS_Y - 30), gc, obj);
         model.draw();
         obj.add(model);
+    }
+
+    public void helpText(){
+        String s = "1, NumPad 1 - add Square\n2, NumPda 2 - add Circle\n3, NumPad 3 - add Triangle\n" +
+                "To move object use arrows\nTo chose object use PageUp and PageDown keys\nNumPad + and NumPad - use to reduce and " +
+                "increase size of object\nUse C key to chose a color\nUse Del to delete object" +
+                "\nMouseClick + Ctrl key add objects to group\nPress H to see this text";
+        gc.setFill(Color.BLACK);
+        int fontSize = 20;
+        gc.setFont(new Font(fontSize));
+        gc.fillText(s, 25, 90);
     }
 
     private void keyListener(Scene scene) {
@@ -117,10 +131,22 @@ public class Main extends Application {
                     case SUBTRACT:
                         model.reduceSize();
                         break;
+                    case DELETE:
+                        if(obj.size() == 0) {
+                            break;
+                        }
+                        obj.remove(index);
+                        index--;
+                        model = obj.get(index);
+                        break;
+                    case H:
+                        helpText();
+                        break;
                 }
                 for (Model anObj : obj) {
                     modelDraw = anObj;
                     modelDraw.draw();
+
                 }
             }
         });
