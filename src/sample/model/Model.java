@@ -29,6 +29,7 @@ public abstract class Model implements Shape {
         setColor();
     }
 
+    @Override
     public abstract void setDraw();
 
     @Override
@@ -67,9 +68,11 @@ public abstract class Model implements Shape {
         }
     }
 
-
     public void setColor() {
         color = Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+    }
+    public void setColor(Color color) {
+        this.color = color;
     }
 
     public void increaseSize() {

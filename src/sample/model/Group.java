@@ -1,6 +1,8 @@
 package sample.model;
 
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,8 +13,13 @@ public class Group extends Model{
     public Group(double x, double y, GraphicsContext gc, List<Model> obj) {
         super(x, y, gc, obj);
     }
-
-    public boolean isTouched(double clickX, double clickY) {
+    
+    public boolean isTouched(double mouseX, double mouseY) {
+        for (Model aList : list) {
+            if (aList.isTouched(mouseX, mouseY)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -57,8 +64,19 @@ public class Group extends Model{
         this.list = list;
     }
 
+    public void addAllToGroup (List<Model> list) {
+        this.list.addAll(list);
+    }
+
 
     public void addToGroup(Model model){
             list.add(model);
+    }
+
+    public void setGroupColor() {
+        Color c1 = Color.rgb(rand.nextInt(255), rand.nextInt(255), rand.nextInt(255));
+        for (Model aList : list) {
+            aList.setColor(c1);
+        }
     }
 }

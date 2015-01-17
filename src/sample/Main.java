@@ -105,7 +105,11 @@ public class Main extends Application {
                         model.setDraw();
                         break;
                     case C:
-                        model.setColor();
+                        if(model instanceof Group) {
+                            ((Group) model).setGroupColor();
+                        } else {
+                            model.setColor();
+                        }
                         break;
                     case ADD:
                         model.increaseSize();
@@ -137,16 +141,10 @@ public class Main extends Application {
                                     return;
                                 }
                                 if (current instanceof Group && selected instanceof Group) {
-                                    Group gr1 = (Group) current;
-                                    Group gr2 = (Group) selected;
-                                    Group group = new Group(model.getX(), model.getY(), gc, obj);
-                                    for (int j = 0; j < gr1.getList().size(); j++) {
-                                        group.addToGroup(gr1.getList().get(i));
-                                    }
-                                    for (int j = 0; j < gr2.getList().size(); j++) {
-                                        group.addToGroup(gr2.getList().get(i));
-                                    }
-                                    group1 = group;
+                                    Group group2 = new Group(model.getX(), model.getY(), gc, obj);
+                                    group2.addAllToGroup(((Group) selected).getList());
+                                    group2.addAllToGroup(((Group) current).getList());
+                                    group1 = group2;
                                     group1.draw();
                                 }else {
                                     group1.addToGroup(current);
